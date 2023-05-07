@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Carrois Gothic", Sans-serif;
+    font-weight: 400;
+}
+  
+ul, ol {
+  list-style: none;
+ }
+  
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar-logo{
+  width: 100px;
+  height: 24px;
+}
+
+.black-bg{
+  background-color: black;
+}
+
+
+small{
+  color: white;
+}
+
+.btn-primary{
+  background-color: #0b41a1;
+}
