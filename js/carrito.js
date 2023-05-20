@@ -28,7 +28,7 @@ function cargarProductosCarrito() {
                             producto.imagen
                           }" class="img-fluid rounded-3" alt="${
         producto.nombre
-      }" />
+      }"/>
                       </div>
                       <div class="col">
                           <p class="small">Producto</p>
@@ -77,6 +77,22 @@ function actualizarBotonesEliminar() {
 }
 
 function eliminarDelCarrito(e) {
+  Toastify({
+    text: "Producto eliminado",
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: "#dc3545",
+      borderRadius: "1rem",
+    },
+    offset: {
+      y: "3rem",
+    },
+    onClick: function () {},
+  }).showToast();
   const idBoton = e.currentTarget.id;
   const index = productosEnCarrito.findIndex(
     (producto) => producto.id === idBoton
@@ -93,14 +109,28 @@ const botonVaciar = document.querySelector("#carrito-vaciar");
 cargarProductosCarrito();
 
 botonVaciar.addEventListener("click", vaciarCarrito);
-
 function vaciarCarrito() {
-  productosEnCarrito.length = 0;
-  localStorage.setItem(
-    "productos-en-carrito",
-    JSON.stringify(productosEnCarrito)
-  );
-  cargarProductosCarrito();
+  Swal.fire({
+    title: "¿Estás seguro?",
+    icon: "question",
+    html: `Se van a borrar ${productosEnCarrito.reduce(
+      (acc, producto) => acc + producto.cantidad,
+      0
+    )} productos.`,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText: "Sí",
+    cancelButtonText: "No",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      productosEnCarrito.length = 0;
+      localStorage.setItem(
+        "productos-en-carrito",
+        JSON.stringify(productosEnCarrito)
+      );
+      cargarProductosCarrito();
+    }
+  });
 }
 
 const contenedorTotal = document.querySelector("#total");

@@ -1,88 +1,10 @@
-class Producto {
-  constructor(id, nombre, imagen, precio, categoria) {
-    this.id = id;
-    this.nombre = nombre;
-    this.imagen = imagen;
-    this.precio = precio;
-    this.categoria = categoria;
-  }
-}
-
-const remera1 = new Producto(
-  "remera-01",
-  "REMERA 1",
-  "./img/productos/remera-1.jpg",
-  1500,
-  "Remeras"
-);
-const remera2 = new Producto(
-  "remera-02",
-  "REMERA 2",
-  "./img/productos/remera-2.jpg",
-  1500,
-  "Remeras"
-);
-const remera3 = new Producto(
-  "remera-03",
-  "REMERA 3",
-  "./img/productos/remera-3.jpg",
-  1500,
-  "Remeras"
-);
-const remera4 = new Producto(
-  "remera-04",
-  "REMERA 4",
-  "./img/productos/remera-4.jpg",
-  1500,
-  "Remeras"
-);
-const remera5 = new Producto(
-  "remera-05",
-  "REMERA 5",
-  "./img/productos/remera-5.jpg",
-  1500,
-  "Remeras"
-);
-const buzo1 = new Producto(
-  "buzo-01",
-  "BUZO 1",
-  "./img/productos/buzo-1.jpg",
-  2500,
-  "Buzos"
-);
-const buzo2 = new Producto(
-  "buzo-02",
-  "BUZO 2",
-  "./img/productos/buzo-2.jpg",
-  2500,
-  "Buzos"
-);
-const jeans1 = new Producto(
-  "jeans-01",
-  "JEANS 1",
-  "./img/productos/jean-1.jpg",
-  5000,
-  "Jeans"
-);
-const jeans2 = new Producto(
-  "jeans-02",
-  "JEANS 2",
-  "./img/productos/jean-2.jpg",
-  5000,
-  "Jeans"
-);
-
-const productos = [
-  remera1,
-  remera2,
-  remera3,
-  remera4,
-  remera5,
-  buzo1,
-  buzo2,
-  jeans1,
-  jeans2,
-];
+let productos = [];
+fetch("./js/productos.json")
+  .then((response) => response.json())
+  .then((data) => {
+    productos = data;
+    cargarProductos(productos);
+  });
 
 const contenedorProductos = document.querySelector("#contenedor-productos");
 let botonesAgregar = document.querySelectorAll(".boton-agregar");
@@ -111,9 +33,7 @@ function cargarProductos(productosElegidos) {
     contenedorProductos.append(div);
   });
   actualizarBotonesAgregar();
-  console.log(botonesAgregar);
 }
-cargarProductos(productos);
 
 function actualizarBotonesAgregar() {
   botonesAgregar = document.querySelectorAll(".boton-agregar");
@@ -135,6 +55,22 @@ if (productosEnCarritoLS) {
 }
 
 function agregarAlCarrito(e) {
+  Toastify({
+    text: "Producto agregado",
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: "#0b41a1",
+      borderRadius: "1rem",
+    },
+    offset: {
+      y: "3rem",
+    },
+    onClick: function () {},
+  }).showToast();
   const idBoton = e.currentTarget.id;
   const productoAgregado = productos.find(
     (producto) => producto.id === idBoton

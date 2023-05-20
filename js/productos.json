@@ -1,0 +1,65 @@
+[
+  {
+    "id": "remera-01",
+    "nombre": "REMERA 1",
+    "imagen": "./img/productos/remera-1.jpg",
+    "precio": 1500,
+    "categoria": "Remeras"
+  },
+  {
+    "id": "remera-02",
+    "nombre": "REMERA 2",
+    "imagen": "./img/productos/remera-2.jpg",
+    "precio": 1500,
+    "categoria": "Remeras"
+  },
+  {
+    "id": "remera-03",
+    "nombre": "REMERA 3",
+    "imagen": "./img/productos/remera-3.jpg",
+    "precio": 1500,
+    "categoria": "Remeras"
+  },
+  {
+    "id": "remera-04",
+    "nombre": "REMERA 4",
+    "imagen": "./img/productos/remera-4.jpg",
+    "precio": 1500,
+    "categoria": "Remeras"
+  },
+  {
+    "id": "remera-05",
+    "nombre": "REMERA 5",
+    "imagen": "./img/productos/remera-5.jpg",
+    "precio": 1500,
+    "categoria": "Remeras"
+  },
+  {
+    "id": "buzo-01",
+    "nombre": "BUZO 1",
+    "imagen": "./img/productos/buzo-1.jpg",
+    "precio": 2500,
+    "categoria": "Buzos"
+  },
+  {
+    "id": "buzo-02",
+    "nombre": "BUZO 2",
+    "imagen": "./img/productos/buzo-2.jpg",
+    "precio": 2500,
+    "categoria": "Buzos"
+  },
+  {
+    "id": "jeans-01",
+    "nombre": "JEANS 1",
+    "imagen": "./img/productos/jean-1.jpg",
+    "precio": 5000,
+    "categoria": "Jeans"
+  },
+  {
+    "id": "jeans-02",
+    "nombre": "JEANS 2",
+    "imagen": "./img/productos/jean-2.jpg",
+    "precio": 5000,
+    "categoria": "Jeans"
+  }
+]
