@@ -1,3 +1,4 @@
+// codigo carrito
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
 productosEnCarrito = JSON.parse(productosEnCarrito);
 
@@ -24,11 +25,7 @@ function cargarProductosCarrito() {
               <div class="card-body p-3 my-3 grey-bg">
                   <div class="row d-flex justify-content-between align-items-center">
                       <div class="col-md-2 col-lg-2 col-xl-2">
-                          <img src="${
-                            producto.imagen
-                          }" class="img-fluid rounded-3" alt="${
-        producto.nombre
-      }"/>
+                          <img src="${producto.imagen}" class="img-fluid rounded-3" alt="${producto.nombre}"/>
                       </div>
                       <div class="col">
                           <p class="small">Producto</p>
@@ -44,14 +41,10 @@ function cargarProductosCarrito() {
                       </div>
                       <div class="col">
                           <p class="small">Subtotal</p>
-                          <p><span>$${
-                            producto.precio * producto.cantidad
-                          } </span></p>
+                          <p><span>$${producto.precio * producto.cantidad} </span></p>
                       </div>
                       <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                          <button class="carrito-producto-eliminar     btn-trash" id="${
-                            producto.id
-                          }"><i class="bi bi-trash3"></i></button>
+                          <button class="carrito-producto-eliminar btn-trash" id="${producto.id }"><i class="bi bi-trash3"></i></button>
                       </div>
                   </div>
               </div>`;
@@ -77,22 +70,6 @@ function actualizarBotonesEliminar() {
 }
 
 function eliminarDelCarrito(e) {
-  Toastify({
-    text: "Producto eliminado",
-    duration: 3000,
-    close: true,
-    gravity: "top",
-    position: "right",
-    stopOnFocus: true,
-    style: {
-      background: "#dc3545",
-      borderRadius: "1rem",
-    },
-    offset: {
-      y: "3rem",
-    },
-    onClick: function () {},
-  }).showToast();
   const idBoton = e.currentTarget.id;
   const index = productosEnCarrito.findIndex(
     (producto) => producto.id === idBoton
@@ -113,10 +90,7 @@ function vaciarCarrito() {
   Swal.fire({
     title: "¿Estás seguro?",
     icon: "question",
-    html: `Se van a borrar ${productosEnCarrito.reduce(
-      (acc, producto) => acc + producto.cantidad,
-      0
-    )} productos.`,
+    text: "Se van a borrar todos tus productos.",
     showCancelButton: true,
     focusConfirm: false,
     confirmButtonText: "Sí",

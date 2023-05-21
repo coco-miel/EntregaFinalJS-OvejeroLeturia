@@ -1,3 +1,23 @@
+// cartel que aparece despues de 3 segs
+setTimeout(() => {
+  Toastify({
+    text: "Nuevos ingresos durante toda esta semana!",
+    duration: 10000,
+    close: true,
+    gravity: "top",
+    position: "center",
+    stopOnFocus: true,
+    style: {
+      background: "#ea4a64",
+    },
+    offset: {
+      y: "3rem",
+    },
+    onClick: function(){}
+  }).showToast();
+}, 3000);
+
+// productos de la tienda
 let productos = [];
 fetch("./js/productos.json")
   .then((response) => response.json())
@@ -55,22 +75,13 @@ if (productosEnCarritoLS) {
 }
 
 function agregarAlCarrito(e) {
-  Toastify({
-    text: "Producto agregado",
-    duration: 3000,
-    close: true,
-    gravity: "top",
-    position: "right",
-    stopOnFocus: true,
-    style: {
-      background: "#0b41a1",
-      borderRadius: "1rem",
-    },
-    offset: {
-      y: "3rem",
-    },
-    onClick: function () {},
-  }).showToast();
+  Swal.fire({
+    title: "Exito!",
+    icon: 'success',
+    text: 'Este producto fue añadido a tu carrito.',
+    showConfirmButton: false,
+    timer: 1000
+  })
   const idBoton = e.currentTarget.id;
   const productoAgregado = productos.find(
     (producto) => producto.id === idBoton
@@ -113,3 +124,4 @@ botonesCategorias.forEach((boton) => {
     }
   });
 });
+
